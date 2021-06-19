@@ -268,7 +268,7 @@ const ShowPost = () => {
 
             </div>
             <div className="col-8">
-                
+
                 {submitted && saved ? <SuccessMessage/> : null}
                 {submitted && !saved ? <ErrorMessage/>: null }
 
