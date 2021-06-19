@@ -125,16 +125,37 @@ const NewPost = () => {
         const {name, value} = event.target;
         setPost({...post, [name]:value});
 
-        if(post.title.includes('foo')) {
-            setFormErrors({...formErrors, ['title']: "The words foo, bar, baz are not allowed", ['titleHasError']: "is-invalid"});
-        }
-        else if(post.description.length < 3){
-            console.log("GOT HERE >>>>>>>>>>>>>>>>>>>")
-            setFormErrors({...formErrors, ['description']: "Please provide a longer description", ['descriptionHasError']: "is-invalid"});
-        }else {
+        console.log(name)
+        console.log(value)
+        if(name =="title")
+        {
+            // handle all title field validations
+            if(post.title.includes('foo')) {
+                setFormErrors({...formErrors, ['title']: "The words foo, bar, baz are not allowed", ['titleHasError']: "is-invalid"});
+            }
+            else {
+                setFormErrors({...formErrors, ['titleHasError']: "is-valid" });
 
-            setFormErrors({...formErrors, ['titleHasError']: "is-valid" ,['descriptionHasError']: "is-valid"});
+            }
+
+
         }
+        else if(name == "description"){
+            if(post.description.length < 3){
+                console.log("GOT HERE >>>>>>>>>>>>>>>>>>>")
+                setFormErrors({...formErrors, ['description']: "Please provide a longer description", ['descriptionHasError']: "is-invalid"});
+            }
+            else{
+                setFormErrors({...formErrors,['descriptionHasError']: "is-valid"});
+
+            }
+
+
+        }
+
+
+
+
 
         console.log(post.title);
         console.log(post.description<3);
